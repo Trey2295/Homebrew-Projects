@@ -1,0 +1,19 @@
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.exe
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.dll
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat_To_Weight_Calculator.Form1.resources
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat_To_Weight_Calculator.Form2.resources
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat_To_Weight_Calculator.Form3.resources
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat_To_Weight_Calculator.Form4.resources
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat_To_Weight_Calculator.Properties.Resources.resources
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.csproj.GenerateResource.cache
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.AssemblyInfoInputs.cache
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.AssemblyInfo.cs
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.csproj.CoreCompileInputs.cache
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.dll
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.pdb
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.deps.json
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.runtimeconfig.json
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.runtimeconfig.dev.json
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\bin\Debug\netcoreapp3.1\BodyFat To Weight Calculator.pdb
+C:\Users\jjgueri1\source\repos\BodyFat To Weight Calculator\BodyFat To Weight Calculator\obj\Debug\netcoreapp3.1\BodyFat To Weight Calculator.genruntimeconfig.cache

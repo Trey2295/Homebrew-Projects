@@ -1,0 +1,10 @@
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\bin\Debug\Squeeze_It.exe.config
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\bin\Debug\Squeeze_It.exe
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\bin\Debug\Squeeze_It.pdb
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.Form1.resources
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.Properties.Resources.resources
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.csproj.GenerateResource.cache
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.csproj.CoreCompileInputs.cache
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.exe
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.pdb
+C:\Users\jjgueri1\Desktop\Squeeze_It\Squeeze_It\Squeeze_It\obj\Debug\Squeeze_It.csproj.AssemblyReference.cache
