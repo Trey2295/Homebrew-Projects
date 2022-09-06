@@ -1,0 +1,2 @@
+C:\SVN_NEAT\trunk\GUI\UDPLibrary\obj\x86\Debug\NetworkLibrary.csprojAssemblyReference.cache
+C:\SVN_NEAT\trunk\GUI\UDPLibrary\obj\x86\Debug\NetworkLibrary.csproj.CoreCompileInputs.cache

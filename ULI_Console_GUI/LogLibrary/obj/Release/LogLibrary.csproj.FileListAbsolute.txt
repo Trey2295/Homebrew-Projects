@@ -1,0 +1,5 @@
+C:\Users\jjgueri1\Desktop\NEATGUIDev\neat\NEAT_GUI_OFFICIAL\LogLibrary\bin\Release\LogLibrary.dll
+C:\Users\jjgueri1\Desktop\NEATGUIDev\neat\NEAT_GUI_OFFICIAL\LogLibrary\bin\Release\LogLibrary.pdb
+C:\Users\jjgueri1\Desktop\NEATGUIDev\neat\NEAT_GUI_OFFICIAL\LogLibrary\obj\Release\LogLibrary.csproj.CoreCompileInputs.cache
+C:\Users\jjgueri1\Desktop\NEATGUIDev\neat\NEAT_GUI_OFFICIAL\LogLibrary\obj\Release\LogLibrary.dll
+C:\Users\jjgueri1\Desktop\NEATGUIDev\neat\NEAT_GUI_OFFICIAL\LogLibrary\obj\Release\LogLibrary.pdb

@@ -1,0 +1,277 @@
+﻿/*
+ * Created by SharpDevelop.
+ * User: holar
+ * Date: 10/22/2013
+ * Time: 10:52 AM
+ * 
+ * To change this template use Tools | Options | Coding | Edit Standard Headers.
+ */
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+
+namespace UDPLibrary
+{
+	//http://msdn.microsoft.com/en-us/library/bbx2eya8.aspx
+	public class StateObject 
+	{
+		// Client socket.
+		public Socket socket = null;
+		// Size of receive buffer.
+		public const int bufferSize = 512;
+		// Receive buffer.
+		public byte[] byteData = new byte[bufferSize];
+		// Received data string.
+		public StringBuilder sb = new StringBuilder();
+	}
+	
+	// Define a class to hold custom event info 
+	public class UDPMessageEventArgs : EventArgs
+	{
+		public UDPMessageEventArgs(byte [] s,string IPAddressMSG)
+		{
+			message = s;
+			iPAddress=IPAddressMSG;
+		}
+		private byte [] message;
+		private string iPAddress;
+		public byte [] Message
+		{
+			get { return message; }
+			set { message = value; }
+		}
+		public string IPAddress
+		{
+			get { return iPAddress; }
+			set { iPAddress = value; }
+		}
+	}//end class
+	
+	// Define a class to hold custom event info 
+	public class UDPRemotePortClosedEventArgs : EventArgs
+	{
+		public UDPRemotePortClosedEventArgs(string s,string IPAddressMSG)
+		{
+			message = s;
+			iPAddress=IPAddressMSG;
+		}
+		private string message;
+		private string iPAddress;
+		public string Message
+		{
+			get { return message; }
+			set { message = value; }
+		}
+		public string IPAddress
+		{
+			get { return iPAddress; }
+			set { iPAddress = value; }
+		}
+	}//end class
+	
+	/// <summary>
+	/// Description of UDPMessage.
+	/// </summary>
+	public class UDPMessage
+	{
+		readonly Socket sckCommunication;
+		//custom events
+		//http://msdn.microsoft.com/en-us/library/w369ty8x.aspx
+		
+		public event EventHandler<UDPMessageEventArgs> MessageReceived ;
+		public event EventHandler<UDPRemotePortClosedEventArgs> RemotePortClosedEvent;
+		
+		//************************************
+		public UDPMessage(string localPort,string remotePort,string localIP)
+		//************************************
+		{
+			
+			EndPoint epLocal;
+			try
+			{
+		
+				// set up socket
+
+
+				sckCommunication = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+			
+			
+				// bind socket                        
+				epLocal = new IPEndPoint(IPAddress.Parse(localIP), Convert.ToInt32(localPort));
+				sckCommunication.Bind(epLocal);
+				
+				IPEndPoint receiver = new IPEndPoint(IPAddress.Any, Convert.ToInt32(remotePort));
+				//The epSender identifies the incoming clients
+				EndPoint epReceiver = (EndPoint) receiver;
+	
+				// Create the state object.
+				StateObject state = new StateObject();
+				//Start receiving data
+				state.socket=sckCommunication;
+				
+				sckCommunication.BeginReceiveFrom (state.byteData, 0, StateObject.bufferSize, 
+					SocketFlags.None, ref epReceiver, new AsyncCallback(OperatorCallBack), state);      
+				
+				
+			}
+			catch (Exception ) 
+			{ 
+			   
+			}   
+			
+		}//end func
+	
+		//************************************
+		private void OperatorCallBack(IAsyncResult ar)
+		//************************************
+		{ 
+			int size=0;
+			
+			
+			//http://msdn.microsoft.com/en-us/library/bbx2eya8.aspx
+			StateObject  state = (StateObject )ar.AsyncState;
+			Socket serverSocket = state.socket;
+			
+			IPEndPoint ipeSender = new IPEndPoint(IPAddress.Any, 0);
+			EndPoint epSender = (EndPoint)ipeSender;
+				 
+			try
+			{
+				size = serverSocket.EndReceiveFrom(ar, ref epSender);
+				
+				// check if theres actually information
+			}
+			 catch(System.Net.Sockets.SocketException exp)
+			{
+				
+				if( exp.ErrorCode ==10054)
+				{
+					//ICMP  host not found
+					//http://social.msdn.microsoft.com/Forums/en-US/bcc98596-c9c7-48f1-92ca-021bbe42cbb1/an-existing-connection-was-forcibly-closed-by-the-remote-host?forum=netfxnetcom
+					OnRemotePortClosedEvent(new UDPRemotePortClosedEventArgs ("Remote port is closed",epSender.ToString())) ;
+				
+				}
+				else
+				{
+					throw;
+				}
+			}
+			catch (Exception )
+			{
+				
+			  
+			}
+			 
+			try
+			{
+				if (size > 0)
+				{
+
+					// converts from data[] to string
+					
+					byte[] data = new byte[size];
+					Array.Copy(state.byteData, data, size);
+
+					OnMessageReceived(new UDPMessageEventArgs(data, epSender.ToString())); 
+					
+				} 
+				
+		  
+				//Start listening to the message send by the user
+				
+				serverSocket.BeginReceiveFrom (state.byteData, 0, StateObject.bufferSize, SocketFlags.None, ref epSender,
+					  new AsyncCallback(OperatorCallBack), state); 
+	 
+			}
+		   
+			catch (Exception )
+			{
+				
+				
+			}
+		}//end func
+		
+		
+		//************************************
+		public void Send(byte [] msg, string remoteIP , string remotePort,string localIP)
+		//************************************
+		{       
+
+			
+			// connect to remote ip and port 
+			IPEndPoint ipeSender = new IPEndPoint(IPAddress.Parse(remoteIP), Convert.ToInt32(remotePort));
+			EndPoint epRemote = (EndPoint)ipeSender;
+
+			//Send the message to all users
+			if (sckCommunication != null)
+			{
+				sckCommunication.BeginSendTo(msg, 0, msg.Length, SocketFlags.None, epRemote,
+									new AsyncCallback(OnSend), epRemote);
+			}
+			
+		}//end func
+		
+		
+		//************************************
+		public void OnSend(IAsyncResult ar)
+		//************************************
+		{
+			try
+			{
+				if (sckCommunication != null)
+				{
+					sckCommunication.EndSendTo(ar);
+				}
+			}
+			catch (Exception )
+			{ 
+			  
+			}
+		}
+		
+		//************************************
+		protected virtual void OnMessageReceived(UDPMessageEventArgs e)
+		//************************************
+		{
+			EventHandler<UDPMessageEventArgs> eventCopy=MessageReceived;
+			if(eventCopy !=null)
+			{
+				eventCopy(this,e);
+			}
+		}//end func
+		
+		//************************************
+		protected virtual void OnRemotePortClosedEvent(UDPRemotePortClosedEventArgs e)
+		//************************************
+		{
+			EventHandler<UDPRemotePortClosedEventArgs> eventCopy=RemotePortClosedEvent;
+			if(eventCopy !=null)
+			{
+				eventCopy(this,e);
+			}
+		}//end func
+
+
+		//************************************
+		public void CloseConnection()
+		//************************************
+		{
+			if (sckCommunication != null)
+			{
+				try
+				{
+					sckCommunication.Shutdown(SocketShutdown.Both);
+					sckCommunication.Close();
+				}
+				catch(Exception )
+				{
+				   
+				}
+			}
+		}
+		
+		
+	}//end class
+}
