@@ -1,2 +1,0 @@
-14:43:24.886:	Space allocated for outbound packet buffer: 952
-14:44:31.724:	Space allocated for outbound packet buffer: 952
